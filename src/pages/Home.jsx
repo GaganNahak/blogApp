@@ -13,7 +13,8 @@ function Home() {
         })
     })
   if(posts.length>0){
-     <div className='w-full'>
+    return(
+        <div className='w-full'>
         <Container>
             {
                 posts.map((post)=>(
@@ -25,10 +26,15 @@ function Home() {
             }
         </Container>
      </div>
+    )
+     
   }else{
-    <Container>
-        <div>Login To See Post</div>
+    return(
+        <Container className={`w-full`}>
+        <h1 className='h-20 w-full lg:text-7xl sm:text-5xl text-3xl text-red-500 bg-green-200 '>Login To See Post !!</h1>
      </Container>
+    )
+    
   }
 }
 

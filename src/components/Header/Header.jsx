@@ -3,6 +3,7 @@ import {Container, Logo, LogoutBtn} from '../index'
 import { Link } from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import sideBar from './sideBar'
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status)
@@ -52,27 +53,28 @@ console.log(authStatus);
   ]
 // const clicked=(item,page)=>{
 //   navigate(item)
- 
-
 // }
+const width=screen.width
+console.log(width);
+
   return (
-    <header className='py-2 sticky top-0 z-5 w-full bg-cyan-700 shadow-2xl'>
-      <Container>
-        <nav className='flex'>
+    <header className='py-2 sticky top-0 z-5 w-full bg-cyan-700 p-2 shadow-2xl'>
+     
+        <nav className='flex w-full  '>
           <div className='mr-2 absolute'>
             <Link to='/'>
-              <Logo width='70px'   />
+              <Logo width='70px' className={`max-[436px]:h-0 max-[436px]:w-0`}  />
 
               </Link>
           </div>
-          <ul className='flex ml-auto bg-amber-100 rounded-full pt-1 pb-1 pl-2.5 pr-2.5 px-1'>
+         <ul className='flex ml-auto bg-amber-100 rounded-full pt-1 pb-1   px-1'>
             {navItems.map((item) => 
             item.active ? (
               <li key={item.name}>
                 <button
                 onClick={() => navigate(item.slug)}
                 // onClick={()=>clicked(item.slug,item.inpage)}
-                className={`inline-bock px-6 py-2 duration-200 text-cyan-400 font-bold hover:bg-cyan-700 hover:text-slate-100 hover:cursor-pointer rounded-full  ${item.inpage?"bg-green-300":null}`}
+                className={`inline-bock px-6 py-2 duration-200 text-cyan-400 font-bold hover:bg-cyan-700 hover:text-slate-100 hover:cursor-pointer rounded-full text-[1px]}`}
                
                 >{item.name}</button>
               </li>
@@ -84,15 +86,12 @@ console.log(authStatus);
               <li>
                 <LogoutBtn />
               </li>
-              
-                
-                
-              
-              
+                  
           }
           </ul>
+         
         </nav>
-        </Container>
+       
     </header>
   )
   

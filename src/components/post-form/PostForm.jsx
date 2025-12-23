@@ -80,7 +80,7 @@ function PostForm ( { post } ) {
         }
     }, [ watch, setValue, slugTransform ] )
     return (
-        <form onSubmit={handleSubmit( submit )} className='w-full'>
+        <form onSubmit={handleSubmit( submit )} className='w-full flex items-center flex-col gap-1 justify-center'>
             <div className='w-2/3'>
                 <Input label="Title" placeholder='title' {...register( 'title', { required: true } )} />
                 <Input label="Slug" placeholder='Slug' {...register( 'slug' )} onInput={( e ) => {

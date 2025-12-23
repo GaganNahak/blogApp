@@ -35,7 +35,7 @@ useEffect(()=>{
     )
   }else{
     return(
-      <div className=' flex flex-wrap content-between bg-cyan-700 min-w-screen min-h-screen [&::-webkit-scrollbar]:w-0'>
+      <div className=' flex flex-wrap  bg-cyan-700 min-w-screen min-h-screen '>
         <div className='w-full block'>
           <Header/>
           <main>

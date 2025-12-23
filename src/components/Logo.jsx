@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Logo() {
+function Logo({className}) {
   return (
-    <div className='text-white underline'>
-      <i><b>BlogApp.com</b></i>
+    <div className={`text-white underline ${className}`}>
+      <i><b>BlogApp</b></i>
     </div>
   )
 }
