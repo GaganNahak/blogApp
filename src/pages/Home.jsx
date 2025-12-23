@@ -6,13 +6,15 @@ function Home() {
     const [posts,setPosts]=useState([])
 
     useEffect(()=>{
+      const userData= authServices.getCurrentUser()
+ 
         appwriteServices.getPosts().then((posts)=>{
            if(posts){
              setPosts(posts.documents)
            }
         })
     })
-  if(posts.length>0){
+  if(posts.length>0 ){
     return(
         <div className='w-full'>
         <Container>
@@ -29,6 +31,7 @@ function Home() {
     )
      
   }else{
+    posts.length=0
     return(
         <Container className={`w-full`}>
         <h1 className='h-20 w-full lg:text-7xl sm:text-5xl text-3xl text-red-500 bg-green-200 '>Login To See Post !!</h1>
