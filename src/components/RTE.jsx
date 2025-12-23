@@ -21,7 +21,7 @@ import { Controller } from 'react-hook-form'
         init={{
             initialValue: defaultValue,
             height: 500,
-            width:500,
+            width:300,
             menubar: true,
             plugins: [
                 "image",
