@@ -43,6 +43,7 @@ const create=async(data)=>{
         {error}
         </p>}
       <form onSubmit={handleSubmit(create)} className=''>
+        <Input  label="Name" type="text" required {...register("name")} />
         <Input  label="Email" type="email" required {...register("email")} />
         <Input  label="Password" type="password" required {...register("password")} />
         <Button type='submit' children="Submit" className='w-full bg-green-500 hover:cursor-pointer hover:bg-green-300 hover:text-slate-400'/>
