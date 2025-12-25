@@ -32,12 +32,23 @@ function Home() {
     )
      
   }else{
-    posts.length=0
-    return(
-        <Container className={`w-full`}>
+    posts.length=0;
+if(authStatus){
+  return(
+    <Container className={`w-full`}>
+        <h1 className='h-20 w-full lg:text-7xl sm:text-5xl text-3xl text-red-500 bg-green-200 '>No Posts Available !!</h1>
+     </Container>
+  )
+}
+else{
+  return(
+    <Container className={`w-full`}>
         <h1 className='h-20 w-full lg:text-7xl sm:text-5xl text-3xl text-red-500 bg-green-200 '>Login To See Post !!</h1>
      </Container>
-    )
+  )
+}
+
+  
     
   }
 }
