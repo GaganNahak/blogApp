@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux'
 
 
 function PostForm ( { post } ) {
+    // console.log(post);
+    
     //this control will be got <Editor> 's control prop 
     const { register, handleSubmit, watch, setValue, getValues, control } = useForm( {
         defaultValues: {
@@ -19,8 +21,8 @@ function PostForm ( { post } ) {
 
     const navigate = useNavigate()
     const userData = useSelector( state => state.auth.userData )
-    console.log(userData);
-    
+    // console.log(userData);
+
     const submit = async ( data ) => {
         if ( post )
         { //if post is already available
@@ -28,10 +30,12 @@ function PostForm ( { post } ) {
             const file = data.image[ 0 ] ? await appwriteService.uploadFile( data.image[ 0 ] ) : null
             if ( file )
             {
+                console.log(post.featuredimage);
+                
                 appwriteService.deleteFile( post.featuredimage ) //we call featuredImage in db
             }
             //now we need to update post
-            const dbPost = await appwriteService.updatePost( post.$id, {
+            const dbPost = await appwriteService.updatePost( post.featuredimage, {
                 ...data, //keep all data as it as
                 featuredimage: file ? file.$id : undefined //we just need update files slug/id
             } )
@@ -89,17 +93,23 @@ function PostForm ( { post } ) {
                     }
                 }} />
                 {/* <RTE label="Content" name="content" control={control} defaultValue={getValues( 'content' )} /> */}
-                <RTE  control={control} label="content" defaultValue={getValues('content')}/>
+                <RTE control={control} label="content" defaultValue={getValues( 'content' )} />
             </div>
+            {/* {console.log( post.featuredimage )} */}
             <div className='w-1/3'>
-                <Input type='file' label="Featured Image" accept="image/png, image/jpg, image/jpeg, image/gif" {...register( 'image', { required: !post } )} /> 
+                <Input type='file' label="Featured Image" accept="image/png, image/jpg, image/jpeg, image/gif" {...register( 'image', { required: !post } )} />
                 {/* //if post not avilable then it true */}
                 {
-                    post && (
-                        <div>
-                            <img src={appwriteService.getFilePreview( post.featuredimage )} alt={post.title} />
-                        </div>
-                    )
+                    
+                        post ? (
+
+                            <div>
+                                <img src={appwriteService.getFilePreview( post.featuredimage ?post.featuredimage:"truee")} alt={post.title} />
+                            </div>
+                        ):null
+                
+
+
                 }
             </div>
             <Button type='submit' children={post ? "Update" : "Submit"} bgColor={post ? "bg-green-600" : undefined} />

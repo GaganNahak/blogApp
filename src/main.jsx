@@ -32,6 +32,7 @@ const router=createBrowserRouter(
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/add-post' element={<AddPost/>}/>
       <Route path='/all-posts/post/:slug' element={<Post/>}/>
+      <Route path='/post/:slug' element={<Post/>}/>
       <Route path='/edit-post/post/:slug' element={<EditPost/>}/>
 
     </Route>

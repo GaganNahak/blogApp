@@ -24,10 +24,10 @@ export class Services{
         }
     }
 
-    async updatePost({title,slug,content,featuredimage,status,userId}){
+    async updatePost({title,slug,content,featuredimage,status,userid}){
         try {
             return await this.databases.updateDocument(conf.appwriteDatabaseId,conf.appwriteCollectionId,slug,{
-                title,content,featuredimage,status
+                title,featuredimage,content,status,userid
             })
         } catch (error) {
             console.error(error);
@@ -87,7 +87,7 @@ export class Services{
          }
 
           getFilePreview(fileId){
-            console.log("Getttinng");
+            // console.log("Getttinng");
             
             return this.bucket.getFileView(conf.appwriteBucketId,fileId)
          }

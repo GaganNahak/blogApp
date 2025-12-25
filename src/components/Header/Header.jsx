@@ -9,7 +9,7 @@ function Header() {
   const authStatus = useSelector((state) => state.auth.status)
   const userData=useSelector((state)=>state.auth.userData)
   const navigate = useNavigate()
-console.log(authStatus);
+// console.log(authStatus);
 // console.log(userData);
 
 
@@ -55,7 +55,7 @@ console.log(authStatus);
 //   navigate(item)
 // }
 const width=screen.width
-console.log(width);
+// console.log(width);
 
   return (
     <header className='py-2 sticky top-0 z-5 w-full bg-cyan-700 p-2 shadow-2xl'>

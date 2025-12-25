@@ -1,12 +1,13 @@
 import React ,{useState,useEffect}from 'react'
 import appwriteServices from '../appwrite/config'
 import { Postcard,Container } from '../components/index'
-
+import { useSelector } from 'react-redux'
 function Home() {
+  const authStatus = useSelector((state) => state.auth.status)
+
     const [posts,setPosts]=useState([])
 
     useEffect(()=>{
-      const userData= authServices.getCurrentUser()
  
         appwriteServices.getPosts().then((posts)=>{
            if(posts){
@@ -14,7 +15,7 @@ function Home() {
            }
         })
     })
-  if(posts.length>0 ){
+  if(posts.length>0 && authStatus===true){
     return(
         <div className='w-full'>
         <Container>

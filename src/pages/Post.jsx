@@ -18,6 +18,8 @@ export default function Post() {
     useEffect( () => {
         if (slug) {
             appwriteService.getPost(slug).then((post) => {
+                // console.log(slug);
+                
               console.log(appwriteService.getFilePreview(post.featuredimage));
                 if (post) {
                   setPost(post);
@@ -46,7 +48,7 @@ export default function Post() {
               
                       {isAuthor && (
                         <div className=" ">
-                            <Link to={`/edit-post/${post.$id}`}>
+                            <Link to={`/edit-post/post/${post.$id}`}>
                                 <Button bgColor="bg-green-500" className="mr-3">
                                     Edit
                                 </Button>

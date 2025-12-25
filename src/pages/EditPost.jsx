@@ -10,13 +10,17 @@ function EditPost() {
     const navigate=useNavigate()
     useEffect(()=>{
         if(post){
-            appwriteServices.getPost().then((post)=>{
+            appwriteServices.getPost(slug).then((post)=>{
                 setPost(post)
             })
         }
         else{
             navigate('/')
         }
+        console.log(slug);
+        
+        console.log(post);
+        
     },[slug,navigate])
   return post?
     <div>
